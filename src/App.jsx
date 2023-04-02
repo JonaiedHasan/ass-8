@@ -11,16 +11,8 @@ function App() {
   const [readTime,setReadTime] = useState(0);
   
   const handelReadTime = (time) =>{
-    const prevoiusTime = JSON.parse(localStorage.getItem("readTime"));
-    if(prevoiusTime){
-      const total = prevoiusTime + time;
-      localStorage.setItem("readTime",total)
-      setReadTime(total);
-    }
-    else{
-      localStorage.setItem("readTime",time);
-      setReadTime(time)
-    }
+    const newTime = readTime + time;
+    setReadTime(newTime)
   };
    const [Title,setTitle] = useState([]);
  const handelBlog = (title) =>{
@@ -29,7 +21,7 @@ function App() {
      const newTitle = Title.find(pd => pd === title);
      if(newTitle){
       toast("You Have Already Bookmarked This Blog")
-      const newTitle = [...Title,title]
+      const newTitle = [...Title]
       setTitle(newTitle);
      }
      else{
